@@ -1,0 +1,45 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+}
+
+plugins {
+    id 'java-library'
+    id 'application'
+    id 'io.qameta.allure' version '2.8.1'}
+
+repositories {
+    jcenter()
+}
+
+ext {
+    selenideVersion = "5.17.4"
+    allureVersion = "2.13.8"
+    junitVersion = "5.7.0"
+}
+
+allure {
+    version = "${allureVersion}"
+    autoconfigure = true
+    aspectjweaver = true
+    useJUnit5 {
+        version = "${allureVersion}"
+    }
+}
+
+dependencies {
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+    implementation 'com.google.guava:guava:29.0-jre'
+    testImplementation "com.codeborne:selenide:${selenideVersion}"
+    compile("org.aeonbits.owner:owner:1.0.12")
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+test {
+    useJUnitPlatform()
+}
