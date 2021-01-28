@@ -34,7 +34,7 @@ dependencies {
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
     implementation 'com.google.guava:guava:29.0-jre'
     testImplementation "com.codeborne:selenide:${selenideVersion}"
-    compile("org.aeonbits.owner:owner:1.0.12")
+    implementation "org.aeonbits.owner:owner:1.0.12"
 }
 
 tasks.withType(JavaCompile) {
